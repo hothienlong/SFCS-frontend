@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SFCS Có Làm Mới Có Ăn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./resources/css/styles.css">
+    <link rel="stylesheet" href="./vendors/css/grid.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script type="text/javascript" src="./resources/js/scripts.js"></script>
+
+</head>
+<header>
+
+    <h1 class="heading-main-text">SCFS</h1>
+    <a href="#" class="logo"><img src="./resources/img/logo.png" alt="logo"></a>
+
+
+    <ul class="main-nav">
+
+        <li>
+            <i class="fas fa-home" style="color: white;"></i>
+            <a href="index.html">Trang Chủ</a>
+        </li>
+        <li>
+            <i class="fas fa-shopping-cart" style="color: white;"></i>
+            <a href="cart.html">Giỏ Hàng</a>
+        </li>
+    </ul>
+    <a href="#" class="loginButton">Đăng nhập</a>
+    <a href="#" class="loginButton">Đăng ký</a>
+</header>
+
+<body onload="SetupEvent()">
+    <section id="cart-section">
+        <h2>Giỏ Hàng</h2>
+        <table border="1" cellspacing="0" width=70%>
+            <tr>
+                <th>STT</th>
+                <th>Ảnh</th>
+                <th>Tên Món Ăn</th>
+                <th>Suất</th>
+                <th>Giá</th>
+                <th>Thành Tiền</th>
+                <th>Hủy Đơn Hàng</th>
+            </tr>
+            <!-- <tr class="order-in-list">
+                <td>1</td>
+                <td><img width="200" height="160" src="./resources/img/comga.jpg" alt="comga"></td>
+                <td>Cơm gà</td>
+                <td>3</td>
+                <td>20000 VND</td>
+                <td>60000 VND</td>
+                <td><a href="#">Xóa</a></td>
+            </tr> -->
+    
+        </table>
+        <h3 id="total-text">Tổng Cộng:</h3>
+        <h3 id="total-money">0 VND</h3>
+    
+    
+        <a onclick="CheckOut()" class="check-out-btn" href="#">
+            <i class="fas fa-money-check small-icon-checkout"></i>
+            Thanh toán
+        </a>
+    
+        <button id="add-comga-btn">Thêm 1 cơm gà</button>
+        <button id="add-comcho-btn">Thêm 1 cơm chó</button>
+        <button onclick="RemoveAllOrder()">xóa tất cả order</button>
+        <button onclick="AddToCart()">Count</button>
+    </section>
+    
+</body>
+
+</html>
