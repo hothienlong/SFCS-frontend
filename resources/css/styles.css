@@ -75,12 +75,12 @@ h1{
     font-weight: 900;
     letter-spacing: 2px;
     float: left;
-    border: yellow solid 2px;
+    /* border: yellow solid 2px; */
 
 }
 
 .logo{
-    border: yellow solid 2px;
+    /* border: yellow solid 2px; */
     margin-left: 10px;
     float: left;
 }
@@ -90,7 +90,7 @@ h1{
 .main-nav{
     float: left;
     list-style: none;
-    border: yellow solid 2px;
+    /* border: yellow solid 2px; */
     margin-left: 20px;
     margin-top: 20px;
 }
@@ -289,7 +289,7 @@ table,th,td{
 /*---------------------COOK--------------------*/
 /*---------------MANAGE-FOOD-STOCK-------------*/
 .addfoodtolist{
-    border: springgreen solid 2px;
+    /* border: springgreen solid 2px; */
     padding: 25px 600px;
 }
 

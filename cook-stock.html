@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./resources/css/styles.css">
     <link rel="stylesheet" href="./vendors/css/grid.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script type="text/javascript" src="./resources/js/scripts.js"></script>
 </head>
 <header id="cook-header">
 
@@ -33,15 +34,15 @@
     <h2>Danh Sách Món Ăn</h2>
     <div class="addfoodtolist">
         <h3>Tên Món Ăn</h3>
-        <input type="foodname">
+        <input id="txtFoodname">
         <div class="clearfix"></div>
         <h3>Giá</h3>
-        <input type="foodprice">
+        <input id="txtFoodprice">
         <div class="clearfix"></div>
-        <a href="#" class="addfood-btn">Thêm Món Ăn</a>
+        <a onclick="AddOneFood()" href="#" class="addfood-btn">Thêm Món Ăn</a>
     </div>
 
-    <a href="#" id="update-btn">Update all to "Available"</a>
+    <a onclick="UpdateAllToAvailable()" href="#" id="update-btn">Update all to "Available"</a>
 
     <table border="1" cellspacing="0" width=70% id="cook-table">
         <tr>
@@ -50,20 +51,14 @@
             <th>Price</th>
             <th>State</th>
         </tr>
-        <tr>
+        <!-- <tr class="food-in-list">
             <td>1</td>
             <td>Cơm gà xối mỡ</td>
             <td>20000 VND</td>
             <td><a href="#">Available</a></td>
 
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Cơm gà xối mỡ</td>
-            <td>20000 VND</td>
-            <td><a href="#">Available</a></td>
+        </tr> -->
 
-        </tr>
         
  
     </table>

@@ -3,40 +3,50 @@
 /*------------------------------------------------------*/
 //sau khi thanh toán cần lưu vào db và chuyển vào nhà bếp
 var idComga = 1;
-var idComcho = 2;
+var idBanhmi = 2;
 var sttGlobal = 0;
-var count=0;
 
-function AddToCart(){
-    alert("Count = " + count);
-    count++;
-}
+// //lưu order vào localStorage -> thao túng trang giỏ hàng bằng localStorage
+// function AddToCart1(){
+//     var rowS = document.getElementsByClassName("row");
+//     var food_boxS = rowS[0].getElementsByClassName("food-box");
+//     var info_foodS = food_boxS[0].getElementsByClassName("info-food");
+//     var name_foodS = info_foodS[0].getElementsByClassName("name-food");
+//     var price_foodS = info_foodS[0].getElementsByClassName("price-food");
+    
+//     localStorage.name_foodS = name_foodS[0].textContent;
+//     localStorage.price_foodS = parseInt(price_foodS[0].textContent);
+//     // AddOneOrderToCart(3);
+//     // localStorage.count++;
+//     // alert(localStorage.count);
+// }
 
-//hàm chỉ chạy 1 lần đầu tiên để gán sự kiện
-function SetupEvent() {
-    var add_comga_btn = document.getElementById("add-comga-btn");
-    add_comga_btn.onclick = ThemComGa;
-    var add_comcho_btn = document.getElementById("add-comcho-btn");
-    add_comcho_btn.onclick = ThemComCho;
 
-}
+// //hàm chỉ chạy 1 lần đầu tiên để gán sự kiện
+// function SetupLocal() {
+//     localStorage.count = 0;
+// }
 
 function ThemComGa() {
     AddOneOrderToCart(idComga);
 }
 
-function ThemComCho() {
-    AddOneOrderToCart(idComcho);
+function ThemBanhMi() {
+    AddOneOrderToCart(idBanhmi);
+    
 }
 
 function AddOneOrderToCart(orderID) {
     sttGlobal++;
-    if (orderID == idComcho)
+    if (orderID == idBanhmi)
         AddOrder(sttGlobal, "./resources/img/banhmi.jpg",
-            "Cơm chó", 1, "20000VND", orderID);
+            "Bánh mì", 1, "20000VND", orderID);
     else if(orderID == idComga)
         AddOrder(sttGlobal, "./resources/img/comga.jpg",
         "Cơm gà", 1, "30000VND", orderID)
+    else
+        AddOrder(sttGlobal, "./resources/img/banhmi.jpg",
+        localStorage.name_foodS, 1, localStorage.price_foodS + "VND", orderID);
 }
 
 function AddOrder(STT, Anh, TenMonAn, Suat, Gia, ID) {
@@ -177,11 +187,84 @@ function CheckOut(){
 /*-----------------------Stock--------------------------*/
 /*------------------------------------------------------*/
 //thêm thức ăn lưu vào db, cập nhật tình trạng còn-hết
+function AddOneFood(){
+    var foodName = document.getElementById('txtFoodname').value;
+    var foodPrice = parseInt(document.getElementById('txtFoodprice').value);
+    AddFood(1, foodName, foodPrice + " VND");
+    
+}
+
+function AddFood(foodID, foodName, price){
+    var tBodyS = document.getElementsByTagName("tBody");
+    var newTR = document.createElement("tr");
+    newTR.setAttribute("class", "food-in-list");
+    var td0 = document.createElement("td");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    var td3 = document.createElement("td");
+
+    td0.textContent = foodID;
+    td1.textContent = foodName;
+    td2.textContent = price;
+    AddBtnAvailable(td3, foodID);
+
+    newTR.appendChild(td0);
+    newTR.appendChild(td1);
+    newTR.appendChild(td2);
+    newTR.appendChild(td3);
+    tBodyS[0].appendChild(newTR);
+}
+
+
+function AddBtnAvailable(inout, foodID){
+    var theA = document.createElement("a");
+    theA.href = "#";
+    theA.text = "Available";
+
+    theA.onclick = function ChangeState(foodID){
+        if(theA.text == "Available"){
+            theA.text = "Out-of-stock";
+            UpdateFoodAvailableByIdDB(foodID);
+        }
+        else{
+            theA.text = "Available";
+            UpdateFoodOutOfStockByIdDB(foodID);
+        }
+        
+    };
+    inout.appendChild(theA);
+}
+
+function UpdateAllToAvailable(){
+    var tRowS = document.getElementsByClassName("food-in-list");
+    for(var i=0;i<tRowS.length;i++){
+        var tDataS = tRowS[i].getElementsByTagName("td");
+        var theA = tDataS[3].getElementsByTagName("a");
+        if(theA[0].textContent == "Out-of-stock"){
+            theA[0].textContent = "Available";           
+        }
+    }
+    UpdateAllFoodAvailableDB();
+    
+}
+
+function UpdateAllFoodAvailableDB(){
+    alert("Đã cập nhật tình trạng tất cả thức ăn trong db");
+}
+
+function UpdateFoodAvailableByIdDB(foodID){
+    alert("Đã cập nhật tình trạng thức ăn trong db");
+}
+
+function UpdateFoodOutOfStockByIdDB(foodID){
+    alert("Đã cập nhật tình trạng thức ăn trong db");
+}
 
 /*------------------------------------------------------*/
 /*----------------------Cook-order----------------------*/
 /*------------------------------------------------------*/
 //chỉ 1 tk cho cook
+//finish xong báo cho khách?
 function PutOneOrderToInQueue(){
     PutOrderToInQueue(2, 312, "Đồng chí X");
 }

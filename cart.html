@@ -31,7 +31,7 @@
     <a href="#" class="loginButton">Đăng ký</a>
 </header>
 
-<body onload="SetupEvent()">
+<body onload="LoadCart()">
     <section id="cart-section">
         <h2>Giỏ Hàng</h2>
         <table border="1" cellspacing="0" width=70%>
@@ -64,10 +64,10 @@
             Thanh toán
         </a>
     
-        <button id="add-comga-btn">Thêm 1 cơm gà</button>
-        <button id="add-comcho-btn">Thêm 1 cơm chó</button>
+        <button onclick="ThemComGa()" id="add-comga-btn">Thêm 1 cơm gà</button>
+        <button onclick="ThemBanhMi()" id="add-comcho-btn">Thêm 1 bánh mì</button>
         <button onclick="RemoveAllOrder()">xóa tất cả order</button>
-        <button onclick="AddToCart()">Count</button>
+        <button onclick="AddToCart1()">Count</button>
     </section>
     
 </body>
